@@ -1,20 +1,70 @@
 
 table {
-	width: 100%;
+	
 }
 
-table, td, th {
+td {
+	padding: 10px;
 	border: 1px solid green;
 }
 
-th, td {
-	padding: 50px;
-}
-
-td.normalCellColorCss {
+td.normalCellColorCss, table.normalCellColorCss {
 	background-color: #FFFFFF;
+	pointer-events: none;  /* To disable event of js, use property auto to enable */
 }
 
 td.targetCellColorCss {
 	background-color: #336600;
 }
+
+/*
+http://purecss.io/buttons/
+
+.button-success, .button-error, .button-warning, .button-secondary {
+	color: white;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+	background: rgb(28, 184, 65);
+}
+
+.button-error {
+	background: rgb(202, 60, 60);
+}
+
+.button-warning {
+	background: rgb(223, 117, 20);
+}
+
+.button-secondary {
+	background: rgb(66, 184, 221);
+}
+
+.pure-button-primary, .pure-button-selected {
+	background-color: #0078e7;
+}
+
+.pure-button {
+	font-family: inherit;
+}
+
+.pure-button {
+	border: 0 none rgba(0, 0, 0, 0);
+	border-radius: 2px;
+	font-size: 100%;
+	padding: 0.5em 1em;
+	text-decoration: none;
+}
+.pure-button {
+	-moz-user-select: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	line-height: normal;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+*/

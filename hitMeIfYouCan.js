@@ -18,39 +18,37 @@ totalScore = 0;
 	for(var i = 0; i < colsRows; i++){
 		tableStr+="<tr>";
 		for(var j = 0; j < colsRows; j++){
-			tableStr+="<td id='"+tempTotalCells+"'></td>";
+			tableStr+="<td class='"+ normalCellColor +"' id='"+ tempTotalCells +"'></td>";
 			tempTotalCells--;
 		}
 		tableStr+="</tr>";
 	}
 	tableStr+="</table>";
 	document.write(tableStr);
+
 	cells = document.querySelectorAll('table td');
 	registerEvent(cells);
 }(5))
 
 function interval(){
 	pauseGame();
-	frequencyId = setInterval(function(){
-		var prevTargetCell = document.getElementsByClassName(targetCellColor)[0],
-		nextCell = cellsArr[Math.floor(Math.random() * totalCells)];
+	frequencyId = setInterval(changeTarget, 1000);
+};
 
-		if(prevTargetCell) prevTargetCell.className = normalCellColor;
-		document.getElementById(nextCell).className = targetCellColor;
-	}, 1000);
+function changeTarget(){
+	var prevTargetCell = document.getElementsByClassName(targetCellColor)[0],
+	nextCell = cellsArr[Math.floor(Math.random() * totalCells)];
+
+	if(prevTargetCell) removeTarget(prevTargetCell);
+	setTarget(document.getElementById(nextCell));
 };
 
 function setResult(e){
-	if(e.target.className === targetCellColor) updateScore();
+	console.log(1);
+	if(e.target.className === targetCellColor){ removeTarget(e.target); updateScore(); }
 };
 
-function registerEvent(){
-	Array.prototype.forEach.call(cells, function(td) {
-		td.addEventListener('click', setResult);
-	});
-};
-
-function updateScore(){ 		
+function updateScore(){
 	document.getElementById('result').textContent = ++totalScore;
 };
 
@@ -58,13 +56,27 @@ function startGame(){
 	interval();
 };
 
-function pauseGame(){ 			
+function pauseGame(){
 	if(frequencyId) clearInterval(frequencyId);
 };
 
 function resetGame(){
 	if(totalScore) {
-		totalScore = 0;
-		document.getElementById('result').textContent = totalScore;
+		totalScore = -1;
+		updateScore();
 	}
+};
+
+function removeTarget(targetCell){
+	targetCell.className = normalCellColor;
+};
+
+function setTarget(targetCell){
+	targetCell.className = targetCellColor;
+};
+
+function registerEvent(){
+	Array.prototype.forEach.call(cells, function(td) {
+		td.addEventListener('mousedown', setResult);
+	});
 };
