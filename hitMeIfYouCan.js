@@ -1,13 +1,15 @@
 'use strict';
 
+/* To initialize variables */
 var frequencyId = null,
 cellsArr = [],
 totalCells = 0,
 cells = [],
 normalCellColor = 'normalCellColorCss',
-targetCellColor = "targetCellColorCss",
+targetCellColor = 'targetCellColorCss',
 totalScore = 0;
 
+/* To draw game */
 (function(colsRows){
 	totalCells = colsRows*colsRows;
 	cellsArr = new Array(totalCells).join().split(',').map(function(item, index){ return ++index;});
@@ -30,11 +32,7 @@ totalScore = 0;
 	registerEvent(cells);
 }(5))
 
-function interval(){
-	pauseGame();
-	frequencyId = setInterval(changeTarget, 1000);
-};
-
+/* To change highlighted cell randomly */
 function changeTarget(){
 	var prevTargetCell = document.getElementsByClassName(targetCellColor)[0],
 	nextCell = cellsArr[Math.floor(Math.random() * totalCells)];
@@ -43,23 +41,29 @@ function changeTarget(){
 	setTarget(document.getElementById(nextCell));
 };
 
-function setResult(e){
-	console.log(1);
-	if(e.target.className === targetCellColor){ removeTarget(e.target); updateScore(); }
+/* To change highlighted cell to noramal cell & updates score */
+function hitTarget(e){
+	removeTarget(e.target); updateScore();
+	//if(e.target.className === targetCellColor){ removeTarget(e.target); updateScore(); }
 };
 
+/* To update score */
 function updateScore(){
 	document.getElementById('result').textContent = ++totalScore;
 };
 
+/* To start game when user presses start game button */
 function startGame(){
-	interval();
+	pauseGame();
+	frequencyId = setInterval(changeTarget, 1000);
 };
 
+/* To pause game when user presses pause button */
 function pauseGame(){
 	if(frequencyId) clearInterval(frequencyId);
 };
 
+/* To reset score of the game */
 function resetGame(){
 	if(totalScore) {
 		totalScore = -1;
@@ -67,16 +71,19 @@ function resetGame(){
 	}
 };
 
+/* To change highlighted cell by normal cell. Overwrite css class */
 function removeTarget(targetCell){
 	targetCell.className = normalCellColor;
 };
 
+/* To change normal cell by highlighted cell. Over write css class */
 function setTarget(targetCell){
 	targetCell.className = targetCellColor;
 };
 
+/* To register mouse down action to each cells of table so when user press mouse on highlighted cell score get increased */
 function registerEvent(){
 	Array.prototype.forEach.call(cells, function(td) {
-		td.addEventListener('mousedown', setResult);
+		td.addEventListener('mousedown', hitTarget);
 	});
 };
