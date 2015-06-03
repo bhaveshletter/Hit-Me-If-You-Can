@@ -17,54 +17,14 @@ td.targetCellColorCss {
 	background-color: #336600;
 }
 
-/*
-http://purecss.io/buttons/
-
-.button-success, .button-error, .button-warning, .button-secondary {
-	color: white;
-	border-radius: 4px;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+.btn {
+	border-radius: 0.5px;
 }
 
-.button-success {
-	background: rgb(28, 184, 65);
+pure-button[disabled], .pure-button-disabled, .pure-button-disabled:hover, .pure-button-disabled:focus, .pure-button-disabled:active {
+	background-image: none;
+	border: 0 none;
+	box-shadow: none;
+	cursor: not-allowed;
+	/*opacity: 0.4;*/
 }
-
-.button-error {
-	background: rgb(202, 60, 60);
-}
-
-.button-warning {
-	background: rgb(223, 117, 20);
-}
-
-.button-secondary {
-	background: rgb(66, 184, 221);
-}
-
-.pure-button-primary, .pure-button-selected {
-	background-color: #0078e7;
-}
-
-.pure-button {
-	font-family: inherit;
-}
-
-.pure-button {
-	border: 0 none rgba(0, 0, 0, 0);
-	border-radius: 2px;
-	font-size: 100%;
-	padding: 0.5em 1em;
-	text-decoration: none;
-}
-.pure-button {
-	-moz-user-select: none;
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	line-height: normal;
-	text-align: center;
-	vertical-align: middle;
-	white-space: nowrap;
-}
-*/

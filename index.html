@@ -7,9 +7,18 @@
  	<script src="hitMeIfYouCan.js"></script>
  </head>
  <body>
- 	<button class="button-success pure-button" type="button" onclick="startGame();"> Start Game </button>
- 	<button class="button-error pure-button" type="button" onclick="pauseGame();"> Pause Game </button>
- 	<button class="button-warning pure-button" type="button" onclick="resetGame();"> Reset Game </button>
- 	<h1 id="result">0</h1>
+ 	<!-- Play -->
+ 	<button class="btn" type="button" onclick="startGame();">
+ 		&#9655;
+ 	</button>
+ 	<!-- Pause -->
+ 	<button class="btn" type="button" onclick="pauseGame();"> 
+ 		&#9647;&#9647;
+ 	</button>
+ 	<!-- Reset/Reload -->
+ 	<button class="btn" type="button" onclick="resetGame();"> 
+ 		&#x21bb;
+ 	</button>
+ 	<button class="pure-button pure-button-disabled" id="result">0</button>
  </body>
  </html> 
