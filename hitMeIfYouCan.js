@@ -41,7 +41,7 @@ function changeTarget(){
 	setTarget(document.getElementById(nextCell));
 };
 
-/* To change highlighted cell to noramal cell & updates score */
+/* To change highlighted cell to normal cell & updates score */
 function hitTarget(e){
 	removeTarget(e.target); updateScore();
 	//if(e.target.className === targetCellColor){ removeTarget(e.target); updateScore(); }
